@@ -4,6 +4,7 @@ import factory.UserFactory;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import user.User;
@@ -52,5 +53,8 @@ public class ChangeUserDataTest {
         assertEquals(messageExpected, messageError);
     }
 
-
+    @After
+    public void tearDown() {
+        userMethods.delete(userToken);
+    }
 }
